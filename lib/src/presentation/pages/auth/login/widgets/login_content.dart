@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:flutter_gamer_mvvm/src/presentation/pages/auth/login/login_viewmodel.dart';
 import 'package:flutter_gamer_mvvm/src/presentation/utils/base_color.dart';
 import 'package:flutter_gamer_mvvm/src/presentation/widgets/default_button.dart';
 
@@ -8,7 +9,10 @@ import 'login_text_field_description.dart';
 
 
 class LoginContent extends StatelessWidget {
-  const LoginContent({super.key});
+  
+  LoginViewModel vm;
+
+  LoginContent(this.vm);
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,7 @@ class LoginContent extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: DefaultTextField(
+              onChange: (value) => vm.changeEmail(value),
               label: 'Correo',
               icon: Icons.email,
             ),
@@ -56,6 +61,7 @@ class LoginContent extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: DefaultTextField(
+              onChange: (value) => vm.changePassword(value),
               label: 'Contraseña',
               icon: Icons.lock,
             ),
@@ -66,7 +72,9 @@ class LoginContent extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: DefaultButton(
               text: 'Iniciar sesión',
-              onPressed: (){},
+              onPressed: (){
+                vm.login();
+              },
             ),
           ),
 

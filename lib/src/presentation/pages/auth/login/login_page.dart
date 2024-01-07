@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gamer_mvvm/src/presentation/pages/auth/login/login_viewmodel.dart';
 import 'package:flutter_gamer_mvvm/src/presentation/pages/auth/login/widgets/login_content.dart';
-
+import 'package:provider/provider.dart';
 import '../../../utils/base_color.dart';
 
-
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    
+    LoginViewModel vm = Provider.of<LoginViewModel>(context);
+    
+    return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      body: LoginContent(),
+      body: LoginContent(vm),
     );
   }
 }
